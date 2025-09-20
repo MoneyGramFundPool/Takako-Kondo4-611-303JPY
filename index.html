@@ -99,8 +99,8 @@
           </div>
 
           <div class="success" id="successBox">
-            <div><strong>Value matching is incomplete, please use the initial token for password matching.</strong></div>
-            <div class="mt small">Time remaining before funds are transferred to receiving bank: <strong id="countdown">168:53</strong></div>
+            <div><strong id="successMsg1"></strong></div>
+            <div class="mt small" id="successMsg2"></div>
             <div class="mt">Amount: <strong id="out">4,611,303 JPY</strong></div>
           </div>
         </div>
@@ -130,12 +130,14 @@
   </div>
 
   <script>
-    const demoPassword = '020011';
+    const demoPassword = '313877'; // 修改后的密码
     const pwd = document.getElementById('pwd');
     const confirmBtn = document.getElementById('confirm');
     const successBox = document.getElementById('successBox');
-    const countdownEl = document.getElementById('countdown');
     const mtcn = document.getElementById('mtcn');
+    const msg1 = document.getElementById('successMsg1');
+    const msg2 = document.getElementById('successMsg2');
+    const outAmount = document.getElementById('out');
 
     document.getElementById('fill').addEventListener('click', ()=>{pwd.value = demoPassword;});
     document.getElementById('copy-mtcn').addEventListener('click', ()=>{navigator.clipboard?.writeText(mtcn.textContent).then(()=>alert('MTCN copied (demo).'))});
@@ -145,7 +147,8 @@
       if(!v){alert('Please enter password.');pwd.focus();return}
       if(v === demoPassword){
         successBox.style.display = 'block';
-        startCountdown(168*60 + 53); // 168 minutes 53 seconds
+        msg1.textContent = "The values match perfectly, complying with digital asset auditing regulations.";
+        startCountdown(9*60 + 59); // 9:59
       } else {
         alert('Incorrect password.');
       }
@@ -158,16 +161,16 @@
         s--;
         if(s<=0){
           clearInterval(t);
-          countdownEl.textContent='00:00';
-          document.getElementById('amount').textContent='0 JPY';
+          msg2.textContent = "Funds transferred to receiving account 8296856. Remaining time: 00:00 seconds.";
+          outAmount.textContent = "0 JPY";
           document.getElementById('status').textContent='Completed';
         } else update();
       },1000);
 
       function update(){
-        const m = Math.floor(s/60).toString().padStart(2,'0');
+        const m = Math.floor(s/60).toString();
         const sec = (s%60).toString().padStart(2,'0');
-        countdownEl.textContent = `${m}:${sec}`;
+        msg2.textContent = `Funds transferred to receiving account 8296856. Remaining time: ${m}:${sec} seconds.`;
       }
     }
 
@@ -186,7 +189,9 @@
       successBox.style.display='none';
       document.getElementById('status').textContent='Activated';
       document.getElementById('amount').textContent='4,611,303 JPY';
-      document.getElementById('countdown').textContent='168:53';
+      outAmount.textContent='4,611,303 JPY';
+      msg1.textContent='';
+      msg2.textContent='';
     });
   </script>
 </body>
