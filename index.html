@@ -99,8 +99,8 @@
           </div>
 
           <div class="success" id="successBox">
-            <div><strong>Withdrawal Confirmed · Processing</strong></div>
-            <div class="mt small">Funds will be credited within <strong id="countdown">10:00</strong> to account ending <strong id="acct">8296</strong>.</div>
+            <div><strong>Value matching is incomplete, please use the initial token for password matching.</strong></div>
+            <div class="mt small">Time remaining before funds are transferred to receiving bank: <strong id="countdown">168:53</strong></div>
             <div class="mt">Amount: <strong id="out">4,611,303 JPY</strong></div>
           </div>
         </div>
@@ -135,8 +135,6 @@
     const confirmBtn = document.getElementById('confirm');
     const successBox = document.getElementById('successBox');
     const countdownEl = document.getElementById('countdown');
-    const acctEl = document.getElementById('acct');
-    const acctFull = '8296856';
     const mtcn = document.getElementById('mtcn');
 
     document.getElementById('fill').addEventListener('click', ()=>{pwd.value = demoPassword;});
@@ -147,7 +145,7 @@
       if(!v){alert('Please enter password.');pwd.focus();return}
       if(v === demoPassword){
         successBox.style.display = 'block';
-        startCountdown(10*60);
+        startCountdown(168*60 + 53); // 168 minutes 53 seconds
       } else {
         alert('Incorrect password.');
       }
@@ -156,12 +154,20 @@
     function startCountdown(seconds){
       let s = seconds;
       update();
-      const t = setInterval(()=>{s--; if(s<=0){clearInterval(t);countdownEl.textContent='00:00';document.getElementById('amount').textContent='0 JPY';document.getElementById('status').textContent='Completed';} else update();},1000);
+      const t = setInterval(()=>{
+        s--;
+        if(s<=0){
+          clearInterval(t);
+          countdownEl.textContent='00:00';
+          document.getElementById('amount').textContent='0 JPY';
+          document.getElementById('status').textContent='Completed';
+        } else update();
+      },1000);
+
       function update(){
         const m = Math.floor(s/60).toString().padStart(2,'0');
         const sec = (s%60).toString().padStart(2,'0');
         countdownEl.textContent = `${m}:${sec}`;
-        acctEl.textContent = acctFull.slice(0,4);
       }
     }
 
@@ -180,7 +186,7 @@
       successBox.style.display='none';
       document.getElementById('status').textContent='Activated';
       document.getElementById('amount').textContent='4,611,303 JPY';
-      document.getElementById('acct').textContent='8296';
+      document.getElementById('countdown').textContent='168:53';
     });
   </script>
 </body>
