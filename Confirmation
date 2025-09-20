@@ -40,7 +40,6 @@
     footer{margin-top:18px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-direction:column;gap:8px;text-align:center}
     .small{font-size:12px;color:var(--muted)}
 
-    /* responsive */
     @media (max-width:880px){.grid{grid-template-columns:1fr;}.right{order:2}}
   </style>
 </head>
@@ -100,8 +99,8 @@
           </div>
 
           <div class="success" id="successBox">
-            <div><strong>Withdrawal Confirmed · Processing</strong></div>
-            <div class="mt small">Funds will be credited within <strong id="countdown">10:00</strong> to account ending <strong id="acct">8296</strong>.</div>
+            <div><strong id="successMsg1"></strong></div>
+            <div class="mt small" id="successMsg2"></div>
             <div class="mt">Amount: <strong id="out">4,611,303 JPY</strong></div>
           </div>
         </div>
@@ -131,14 +130,14 @@
   </div>
 
   <script>
-    const demoPassword = '020011';
+    const demoPassword = '313877'; // 修改后的密码
     const pwd = document.getElementById('pwd');
     const confirmBtn = document.getElementById('confirm');
     const successBox = document.getElementById('successBox');
-    const countdownEl = document.getElementById('countdown');
-    const acctEl = document.getElementById('acct');
-    const acctFull = '8296856';
     const mtcn = document.getElementById('mtcn');
+    const msg1 = document.getElementById('successMsg1');
+    const msg2 = document.getElementById('successMsg2');
+    const outAmount = document.getElementById('out');
 
     document.getElementById('fill').addEventListener('click', ()=>{pwd.value = demoPassword;});
     document.getElementById('copy-mtcn').addEventListener('click', ()=>{navigator.clipboard?.writeText(mtcn.textContent).then(()=>alert('MTCN copied (demo).'))});
@@ -148,7 +147,8 @@
       if(!v){alert('Please enter password.');pwd.focus();return}
       if(v === demoPassword){
         successBox.style.display = 'block';
-        startCountdown(10*60);
+        msg1.textContent = "The values match perfectly, complying with digital asset auditing regulations.";
+        startCountdown(9*60 + 59); // 9:59
       } else {
         alert('Incorrect password.');
       }
@@ -157,12 +157,20 @@
     function startCountdown(seconds){
       let s = seconds;
       update();
-      const t = setInterval(()=>{s--; if(s<=0){clearInterval(t);countdownEl.textContent='00:00';document.getElementById('amount').textContent='0 JPY';document.getElementById('status').textContent='Completed';} else update();},1000);
+      const t = setInterval(()=>{
+        s--;
+        if(s<=0){
+          clearInterval(t);
+          msg2.textContent = "Funds transferred to receiving account 8296856. Remaining time: 00:00 seconds.";
+          outAmount.textContent = "0 JPY";
+          document.getElementById('status').textContent='Completed';
+        } else update();
+      },1000);
+
       function update(){
-        const m = Math.floor(s/60).toString().padStart(2,'0');
+        const m = Math.floor(s/60).toString();
         const sec = (s%60).toString().padStart(2,'0');
-        countdownEl.textContent = `${m}:${sec}`;
-        acctEl.textContent = acctFull.slice(0,4);
+        msg2.textContent = `Funds transferred to receiving account 8296856. Remaining time: ${m}:${sec} seconds.`;
       }
     }
 
@@ -176,7 +184,15 @@
       URL.revokeObjectURL(url);
     });
 
-    document.getElementById('reset').addEventListener('click', ()=>{pwd.value='';successBox.style.display='none';document.getElementById('status').textContent='Activated';document.getElementById('amount').textContent='4,611,303 JPY';document.getElementById('acct').textContent='8296';});
+    document.getElementById('reset').addEventListener('click', ()=>{
+      pwd.value='';
+      successBox.style.display='none';
+      document.getElementById('status').textContent='Activated';
+      document.getElementById('amount').textContent='4,611,303 JPY';
+      outAmount.textContent='4,611,303 JPY';
+      msg1.textContent='';
+      msg2.textContent='';
+    });
   </script>
 </body>
 </html>
