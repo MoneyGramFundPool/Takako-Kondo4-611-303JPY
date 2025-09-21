@@ -1,236 +1,109 @@
-
-
-
 <!DOCTYPE html>
-<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="stylesheet" type="text/css" href="css/default.css" media="screen and (min-width:601px)" /><link href="css/sp.css" rel="stylesheet" media="screen and (max-width:600px)" />
-    
-    <script src="javaScript/jquery-1.8.2.min.js" type="text/javascript"></script>
-    <script src="javaScript/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-    <script src="javaScript/jquery.validationEngine-ja.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="css/validationEngine.jquery.css" />
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>申請フォーム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery("#form1").validationEngine();
-        });
-    </script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>
-	お問い合わせ・資料請求
-</title></head>
-<body class="body">
-    <form method="post" action="./ServiceContactInput.aspx" id="form1" class="h-adr">
-<div class="aspNetHidden">
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="noW2CIZAj1SBbSgjdRZ8QDGqKY4eKouf4dbkLwmePRec8Hg63y0mKk9oQ5lhTmNIjXmQFpyepM7N/jOzQY7UbHkEjCOdvh0Q67SEgTCNEicGlY5s15W3Vb2OheplZByx9Lbg4dZV6IyB/QJdYu9dUrJP54fCnw0q2p53l+OdyDrMkgWZ5rnRcPliiCgJQd0UAyPusob2MbuIl4/JI4DIG9pVCGqhdBJ3c/S4/xNuHk0dJbfux8txlR/DRC1ViA3Qt5Vw8zVMTWyLeVi1m3lzXRkLfDQAw0Ljl9Peap1SDi0Oe4rDB30CEBH268EX/jDde2teSWNXb+Ab1r7RpGMY5oLn5+qUVrgC+ChlyFpyuEonJjLDw/5bCXHWESj8e685KgXmosGkCuxxLiWjPwFAiQokrzOzhuWppmXjXD7CBFUpTzrjPMrSTh8uZpinTI+kcSKNhNHpfm1qghmTlEa0TZt+aW+FcxE8cOa/fH98saiShW9w2hW377u83kIJHNOP3TSVI879i1E3+LWQv0scIQhHFqfOamF2X6uesuSNlgoeEUB5bQfxyTZtJRwuQYtCKX7DMaABUydW666+QXcGiQvE+ClSpduniV/wcS6EDbC1WiRzaTKkoXT/B0HIp1LwxrwjWL1O4mwpV5bMoVfGql2h5StVuLujeQKnrcVMDaqJo5Sn+RrrtgfdUckPN/PFKBzC4sapNT0tqzSLP+0nt4U6BLQzBTKj5ZM9wKdaysaExn5uAx+ASU+ZlnngKKUFHfD1Oj5YnX506MsN7dTb+Yix4LIh7NEiczJmgpRX3ZMwLW0GVF1tUcvOve5ay/gB9plQrGBFOS9L/PmTwPE6YNCbmWFgNHV06mH1H8SLynTxbC1VMqtqxiexMpl69sNaQBNtMTRkWNqLR4g3/XIMYSmpE2l+ujyqGcTUnbDoHe9lYEK6to/o0N47WCIUGssl0cO3BCuqYn0g13Z+KbuJ4svFG79atLW0hXYH/Z67LRz+epFCJzIdApCiAv2AesKX3cc0TEghfX5J4QJ/F0aLsmaXPQSBTvx1VOZuyCQ6NLwysWU0hM0U92+a0kiGmmUxHdIlGYI+MmG5j0WJol6/tUPINSK+yN4k6qw4KGeh4kg+HBepv8Re0K4v4hqWIrQCes0BPgGQNkH0/Tl5ZgiWDEV6wroJXlJRlFvXkQu8AZ8NpkXbNHdWLkYGDCEKrpRgT9z9SzpRufUqNWKw/4BQeFoKAGVZjDB3DdelrPHkj3YFuGsUqasGR+e9hbWKUw8jwrC/4jVviJ+weomb5J9FlmAZwpaq0ulytITj7F7kh0rcomIq5oteMQIHNiccLnoGj7bppCFfdp1uI5nSSqWITk2ajZquqGReA2HTwrtJxNGnhXRzmdVLjrX5VveDUfnzJkUUfvSIQ+EKZkIRRBjTGsyf3JvNskXhNtT5N1Qmk5x7GrEszRgmQuzr2EXmsv/UVeZlh1daxjXHtSJxDlYEZdBjNVLsigAb3X+/cHn9TZI=" />
+  <style>
+    body {
+      background-color: #f8d7da; /* 淡红背景 */
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+    .form-container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Password Gate -->
+<div id="password-gate" class="d-flex vh-100 justify-content-center align-items-center">
+  <div class="form-container text-center">
+    <h3 class="mb-4">パスワード認証</h3>
+    <input type="password" id="password-input" class="form-control mb-3" placeholder="パスワードを入力してください">
+    <button class="btn btn-primary w-100" onclick="checkPassword()">送信</button>
+    <p id="error-msg" class="text-danger mt-3"></p>
+  </div>
 </div>
 
-<div class="aspNetHidden">
-
-	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="FFAE317F" />
-	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="3aOGh3LtYpXmbAKsbODA0akRbZt9yrceCFPZislSZVUCbBmF2M0uF/x8r7qp2wREC3qRALPC9doOffem58w4JCKpf5Q2IlCS8kCsAXf6jpMqfjiwxXXropJYsBAlSBgECOXK6s6+TU/vPzgVeTRaHAX2bBzhP/BWFV1REekcw2mTm8wjTzwD+un0KptLOY7X8fTL+MfPKp2Ikgo5zEfa5PziLaBUQEGGmYuFDA/Wjt64/9j6vqRJL7viAF238mPIQmrYzqOVL86tdoL5DHNxRTxca6Y+H0T1/D1KV56Qlr7H2ZXAINlj3DIqU8Ur8nColUwkuUZA8LnL4Oo+GEsWlsb9jyIBVVkWDyhgdX416vtPHIc7zbOjSp/7gg1JY+GHX6My1eDfDTQGFh23xf42qHEQAeabNybeipskH+3yq8YlsEeuFgJtESpc2cZeMYwZIAamhof9B6JMLvrpaffbwQ3yxcj04XLP0OJQH5idfE0IZDb6X1ggUjHTaGTC+tPQbRQw9SPSJooPwttgNs0JIKnCpDB2T8mD8R+fxz6r5YZmbziv9sW1lK4X8CDOXhRw871J+MYaW6oRRyMOz5hA0T+nZXbzZ8M7QGLt76x9TdNoiXCADBWaaxdmX2xboU8SuRIscisitLJpg2DsBbdmbmXAYAsgWNUrcADXXdp9y+hsZrJDwKUWnZAIOKmrdDCJB+erVqi/eEe77lcjzdADJMiios3xkfyZaX+mmZNrPcDZ7N0T6Zf8QMghOsbcqHF0X5k//6xKhozn6hVL0ISGiAfE/jC0MkmZcqQEvGMlLmTNo8mpjhIKm1PVDXyiUWWT5ywNB22sOtbqqLhWwU9zid28F5yt2L62Cf6YsJLYoO4=" />
-</div>
-        <div class="sentence">
-            <br />
-            <h1>お問い合わせ・資料請求</h1>
-
-            サービスに関する資料請求・お問い合わせは、以下のフォームからお送りください。<br />
-            後ほど、担当者より回答させて頂きます。<br />
-
-            <br />
-
-            ■携帯・スマートフォンのアドレスをご利用の方へ<br />
-            迷惑メールの対策などでドメイン指定を行っている場合、メールが受信できない場合がございます。<br />
-            ドメイン指定受信許可の設定をお願いします。<br />
-            <br />
-            【ドメイン】@16densan.co.jp<br />
-            <br />
-            ドメイン指定の解除方法については各携帯会社のサイト等をご確認ください。<br />
-
-            <br />
-
-            <div class="float">
-                <br />
-                <b class="font_color">・「※」は必須項目です。
-                </b>
-            </div>
-            <div class="faq_link">
-                新規のお客さま向けよくあるご質問は<a id="LinkNew" href="https://www.16densan.co.jp/payment/net/faq.html">こちら</a><br />
-                ご利用者さま向けよくあるご質問は<a id="LinkClient" href="https://www.16densan.co.jp/customer/faq.html">こちら</a>
-            </div>
-            <div class="clear"></div>
+<!-- Application Form -->
+<div id="application-form" class="hidden">
+  <div class="form-container">
+    <h3 class="text-center mb-4">申請フォーム</h3>
+    <form>
+      <div class="mb-3 row">
+        <label class="col-sm-4 col-form-label">サービス <span class="text-danger">※</span></label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="service">
         </div>
+      </div>
 
-        <div>
-            <span class="p-country-name" style="display: none;">Japan</span>
-            <table class="table">
-                <tr>
-                    <th>サービス　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <label>
-                            <input value="1" name="ServiceGroup" type="radio" id="rbtnService1" class="validate[required]" /><span id="lblService1">JCSネット（自動集金サービス）</span></label><br />
-                        <label>
-                            <input value="2" name="ServiceGroup" type="radio" id="rbtnService2" class="validate[required]" /><span id="lblService2">コンビニ収納サービス</span></label>
-                    </td>
-                </tr>
-                <tr>
-                    <th>お問い合わせ種類　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <label>
-                            <input value="1" name="KindGroup" type="radio" id="rbtnKind1" class="validate[required]" /><span id="lblKind1">資料請求・サービスの詳細</span></label><br />
-                        <label>
-                            <input value="2" name="KindGroup" type="radio" id="rbtnKind2" class="validate[required]" /><span id="lblKind2">新規契約・見積もり</span></label><br />
-                        <label>
-                            <input value="3" name="KindGroup" type="radio" id="rbtnKind3" class="validate[required]" /><span id="lblKind3">ご利用者さまのお問い合わせ全般</span></label><br />
-                        <label>
-                            <input value="4" name="KindGroup" type="radio" id="rbtnKind4" class="validate[required]" /><span id="lblKind4">その他</span></label><br />
-                        <b class="font_color">
-                            <a id="LinkTransfer" href="https://www1.jcs-gifu.co.jp/WebRequest/TransferRequestInput.aspx" target="_blank">＊「預金口座振替依頼書の発注」はこちら</a></b>
-                    </td>
-                </tr>
-                <tr>
-                    <th>委託者番号<br />
-                        （JCSネットをご利用中のお客様はご入力ください）</th>
-                    <td>
-                        <input name="txtClientId" type="text" id="txtClientId" style="height: 25px; width: 30%;" placeholder="12345" maxlength="5" class="validate[custom[number],minSize[4]]" />
-                        （半角数字）
-                    </td>
-                </tr>
-                <tr>
-                    <th>業種</th>
-                    <td>
-                        <select name="dropBusinessId" id="dropBusinessId" style="height:25px;width:30%;">
-	<option value="0">未選択</option>
-	<option value="1">福祉・医療関連</option>
-	<option value="2">幼稚園・保育園関連</option>
-	<option value="3">教室・クラブ関連</option>
-	<option value="4">不動産関連</option>
-	<option value="5">組合・団体関連</option>
-	<option value="6">士業関連</option>
-	<option value="7">小売業・サービス関連</option>
-	<option value="8">その他</option>
-
-</select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>会社名<br />
-                        （個人の方は氏名）　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <input name="txtCorporateName" type="text" id="txtCorporateName" style="height: 25px; width: 60%;" placeholder="十六電算デジタルサービス株式会社" class="validate[required]" maxlength="50" />
-                        <br />
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <th>ご担当者名　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <input name="txtChargeName" type="text" id="txtChargeName" style="height: 25px; width: 30%;" placeholder="十六太郎" class="validate[required]" maxlength="20" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>郵便番号　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <input name="txtPostalCode1" type="text" id="txtPostalCode1" class="p-postal-code validate[required,custom[number]]" size="3" maxlength="3" style="height: 25px; width: 20%;" placeholder="500" />－<input name="txtPostalCode2" type="text" id="txtPostalCode2" class="p-postal-code validate[required,custom[number]]" size="4" maxlength="4" style="height: 25px; width: 20%;" placeholder="8833" />
-                        （半角数字）
-                    </td>
-                </tr>
-                <tr>
-                    <th>住所　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <input name="txtAddress1" type="text" id="txtAddress1" class="p-region p-locality p-street-address p-extended-address validate[required]" maxlength="100" style="height: 25px; width: 90%;" placeholder="岐阜県岐阜市神田町　（郵便番号をご入力頂くと自動で入力されます）" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>丁目・番地　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <input name="txtAddress2" type="text" id="txtAddress2" style="height: 25px; width: 40%;" placeholder="7丁目12番地" class="validate[required]" maxlength="50" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>マンション・ビル名</th>
-                    <td>
-                        <input name="txtAddress3" type="text" id="txtAddress3" style="height: 25px; width: 40%;" placeholder="十六ビル4階" maxlength="50" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>メールアドレス<br />
-                        （回答方法に「メール」を選択される場合はご入力ください）</th>
-                    <td>
-                        <input name="txtEmail" type="text" id="txtEmail" style="height: 25px; width: 70%;" placeholder="jcs@example.co.jp" class="validate[custom[email]] validate[condRequired[rbtnAnswer2]]" maxlength="255" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>電話番号　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <input name="txtTel1" type="text" id="txtTel1" style="height: 25px; width: 20%;" placeholder="058" class="validate[required,custom[number]]" maxlength="5" />－<input name="txtTel2" type="text" id="txtTel2" style="height: 25px; width: 20%;" placeholder="262" class="validate[required,custom[number]]" maxlength="4" />－<input name="txtTel3" type="text" id="txtTel3" style="height: 25px; width: 20%;" placeholder="1116" class="validate[required,custom[number]]" maxlength="4" />
-                        （半角数字）
-                        <br />
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <th>FAX番号</th>
-                    <td>
-                        <input name="txtFax1" type="text" id="txtFax1" style="height: 25px; width: 20%;" placeholder="058" class="validate[custom[number]]" maxlength="5" />－<input name="txtFax2" type="text" id="txtFax2" style="height: 25px; width: 20%;" placeholder="264" class="validate[custom[number]]" maxlength="4" />－<input name="txtFax3" type="text" id="txtFax3" style="height: 25px; width: 20%;" placeholder="9016" class="validate[custom[number]]" maxlength="4" />
-                        （半角数字）
-                        <br />
-                        
-                    </td>
-                </tr>
-                <tr>
-                    <th>回答方法　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <label>
-                            <input value="1" name="AnswerGroup" type="radio" id="rbtnAnswer1" class="validate[required]" /><span id="lblAnswer1">電話</span></label><br />
-                        <label>
-                            <input value="2" name="AnswerGroup" type="radio" id="rbtnAnswer2" class="validate[required]" /><span id="lblAnswer2">メール</span></label><br />
-                        <label>
-                            <input value="3" name="AnswerGroup" type="radio" id="rbtnAnswer3" class="validate[required]" /><span id="lblAnswer3">どちらでも（電話・メール）</span></label>
-                    </td>
-                </tr>
-                <tr>
-                    <th>お問い合わせ内容　<span style="color: #ff0000;">※</span></th>
-                    <td>
-                        <textarea name="txtContactDetail" id="txtContactDetail" cols="20" rows="2" style="height: 200px; width: 90%;" class="validate[required]" maxlength="1000"></textarea>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="sentence">
-                <b class="font_size">個人情報の取り扱いについて</b><br />
-
-                ご入力頂いたお客様の個人情報は当社へのご意見、お問い合わせに対するご連絡、ご回答に利用させていただきます。<br />
-                当社の<a id="LinkHogo" href="https://www.16densan.co.jp/privacy.html">『個人情報保護方針』</a>および<a id="LinkKouhyou" href="https://www.16densan.co.jp/pdf/privacypolicy20220301.pdf">『「個人情報の保護に関する法律」に基づく公表等事項』</a>を確認の上、送信してください。<br />
-                お客様から発信される情報は暗号化（SSL方式）されて送信されます。<br />
-
-                <br />
-
-            <b><input id="chkDoui" type="checkbox" class="validate[required]" name="CheckGroup" />個人情報の取り扱いについて同意します。</b>
-            </div>
+      <div class="mb-3 row">
+        <label class="col-sm-4 col-form-label">お問い合わせ種類 <span class="text-danger">※</span></label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="type">
         </div>
+      </div>
 
-        <ul class="button">
-            <li>
-                <input type="submit" name="btnCheck" value="確認" id="btnCheck" style="font-size:Large;font-weight:bold;height:50px;width:100px;" />
-            </li>
-            <li>
-                <input type="submit" name="btnCancel" value="キャンセル" onclick="window.close();" id="btnCancel" style="font-size:Large;font-weight:bold;height:50px;width:100px;" />
-            </li>
-        </ul>
-
-        <div class="address_header">
-            ≪ご連絡先≫
+      <div class="mb-3 row">
+        <label class="col-sm-4 col-form-label">会社名（個人の方は氏名） <span class="text-danger">※</span></label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="company">
         </div>
+      </div>
 
-        <div class="address">
-            十六電算デジタルサービス株式会社　業務部<br />
-            TEL:0120-165-025（直通）　FAX:058-264-9016（直通）<br />
-            お電話の受付時間は金融機関営業日の9:00～17:00です。<br />
-            <br />
+      <div class="mb-3 row">
+        <label class="col-sm-4 col-form-label">メールアドレス <span class="text-danger">※</span></label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" name="email">
         </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-4 col-form-label">電話番号</label>
+        <div class="col-sm-8">
+          <input type="tel" class="form-control" name="phone">
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-4 col-form-label">お問い合わせ内容 <span class="text-danger">※</span></label>
+        <div class="col-sm-8">
+          <textarea class="form-control" rows="4" name="message"></textarea>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-success w-50">送信</button>
+      </div>
     </form>
-    
+  </div>
+</div>
+
+<script>
+  function checkPassword() {
+    const input = document.getElementById("password-input").value;
+    const correctPassword = "1234"; // ← ここでパスワードを変更できます
+    if (input === correctPassword) {
+      document.getElementById("password-gate").classList.add("hidden");
+      document.getElementById("application-form").classList.remove("hidden");
+    } else {
+      document.getElementById("error-msg").textContent = "パスワードが正しくありません。";
+    }
+  }
+</script>
+
 </body>
 </html>
